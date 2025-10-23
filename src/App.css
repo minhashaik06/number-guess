@@ -1,0 +1,90 @@
+:root{
+  --bg-start: #0f172a;
+  --bg-end: #1f2937;
+  --accent: #7c3aed;
+  --accent-2: #06b6d4;
+  --success: #10b981;
+  --danger: #ef4444;
+  --muted: #9ca3af;
+  --panel: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+
+.app-root{
+  min-height:100vh;
+  background: linear-gradient(160deg,var(--bg-start), var(--bg-end));
+  display:flex;align-items:center;justify-content:center;padding:24px;
+}
+
+.container{
+  width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.6);
+}
+
+.header{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:12px}
+.header h1{color:white;margin:0;font-size:1.6rem;letter-spacing:0.4px}
+.header .tag{color:var(--muted);margin:6px 0 0}
+
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.panel{background:var(--panel);padding:16px;border-radius:10px;color:#e6edf3}
+
+.game-panel{display:flex;flex-direction:column;gap:12px}
+.top-row{display:flex;gap:12px}
+.score,.highscore{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;flex:1;text-align:center}
+.score-label{font-size:12px;color:var(--muted)}
+.score-value{font-size:1.2rem;font-weight:700}
+
+.number-box{display:flex;align-items:center;justify-content:center;padding:8px}
+.number-display{width:180px;height:120px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:12px;display:flex;align-items:center;justify-content:center}
+.number-inner{font-size:3.2rem;font-weight:800;color:white;letter-spacing:1px}
+.number-display.pulse{animation:pop 900ms ease-in-out infinite}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+
+.feedback{font-size:1.05rem;padding:10px;border-radius:8px;text-align:center;font-weight:700}
+.feedback.neutral{color:var(--muted);background:transparent}
+.feedback.high{color:var(--danger);background:linear-gradient(90deg, rgba(239,68,68,0.08), transparent)}
+.feedback.low{color:#60a5fa;background:linear-gradient(90deg, rgba(96,165,250,0.06), transparent)}
+.feedback.win{color:var(--success);background:linear-gradient(90deg, rgba(16,185,129,0.06), transparent)}
+
+.guess-form{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:6px}
+.guess-input{flex:1;padding:12px 14px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:white;font-size:1rem;outline:none}
+.guess-input::placeholder{color:rgba(255,255,255,0.35)}
+.btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04)}
+.btn.hint{background:linear-gradient(90deg,#9333ea,#7c3aed);color:white}
+
+.hint-message{
+  background:linear-gradient(90deg, rgba(147,51,234,0.08), transparent);
+  color:#c084fc;
+  padding:12px;
+  border-radius:8px;
+  text-align:center;
+  font-weight:500;
+  position:relative;
+}
+.hint-count{
+  position:absolute;
+  right:8px;
+  top:8px;
+  font-size:0.75rem;
+  opacity:0.7;
+}
+
+.controls{display:flex;align-items:center;gap:8px;margin-top:8px;color:var(--muted)}
+.difficulty-select{padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);color:white;border:none}
+
+.history-panel h2{margin:0 0 8px 0}
+.guess-history{list-style:none;padding:0;margin:0;max-height:320px;overflow:auto}
+.history-item{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid rgba(255,255,255,0.02)}
+.history-value{font-weight:700}
+.history-time{color:var(--muted);font-size:12px}
+.history-empty{color:var(--muted);padding:12px}
+
+.footer{text-align:center;margin-top:14px;color:var(--muted)}
+
+@media (max-width:800px){
+  .main-grid{grid-template-columns:1fr;}
+  .number-display{width:140px;height:96px}
+}
